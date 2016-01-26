@@ -15,4 +15,15 @@ describe OysterCard do
   it "checks for maximum limit" do
   	expect{ subject.top_up(100) }.to raise_error "Card limit is #{OysterCard::CARD_LIMIT}"
   end
+
+  it { is_expected.to respond_to(:deduct).with(1).argument}
+
+  it "can deduct from the balance" do
+    subject.top_up(90)
+    expect(subject.deduct(10)).to eq 80
+  end
+
+  it "check for sufficient funds" do
+    expect{ subject.deduct(10)}.to raise_error "Insufficient funds"
+  end
 end

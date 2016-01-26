@@ -2,3 +2,4 @@ object                  message
 customer
 card                    balance
                         top_up
+                        deduct
