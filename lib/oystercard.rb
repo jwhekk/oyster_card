@@ -8,27 +8,30 @@ class OysterCard
  end
 
  def top_up(value)
- 	balance_expected = @balance + value
+ 		balance_expected = @balance + value
  		raise "Card limit is #{CARD_LIMIT}" if balance_expected > CARD_LIMIT
-   @balance += value
- end
-
- def deduct(value)
-   raise "Insufficient funds" if value > @balance
-   @balance -= value
+   	@balance += value
  end
 
  def touch_in
-  raise "minimum fare is #{MIN_FARE} pound" if @balance < MIN_FARE
- 	@card_status = true
+  	raise "minimum fare is #{MIN_FARE} pound" if @balance < MIN_FARE
+ 		@card_status = true
  end
 
  def touch_out
+ 	deduct(MIN_FARE)
 	@card_status = false
  end
 
  def in_journey?
  	@card_status
+ end
+
+private
+
+ def deduct(value)
+   raise "Insufficient funds" if value > @balance
+   @balance -= value
  end
 
 end
