@@ -1,6 +1,6 @@
 class OysterCard
  CARD_LIMIT = 90
- attr_reader :balance
+ attr_reader :balance, :card_status
 
  def initialize
    @balance = 0
@@ -15,6 +15,18 @@ class OysterCard
  def deduct(value)
    raise "Insufficient funds" if value > @balance
    @balance -= value
+ end
+
+ def touch_in
+ 	@card_status = true
+ end
+
+ def touch_out
+	@card_status = false
+ end
+
+ def in_journey?
+ 	@card_status
  end
 
 end

@@ -3,3 +3,6 @@ customer
 card                    balance
                         top_up
                         deduct
+                        touch_in
+                        touch_out
+                        in_journey?
