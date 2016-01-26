@@ -27,4 +27,18 @@ describe Oystercard do
     end
   end
 
+  # In order to get through the barriers.
+  # As a customer
+  # I need to touch in and out.
+
+  it 'shows that you are in_journey when you touch in' do
+    subject.touch_in
+    expect(subject).to be_in_journey
+  end
+
+  it 'shows that you are not in_journey when you touch out' do
+    subject.touch_out
+    expect(subject).not_to be_in_journey
+  end
+
 end

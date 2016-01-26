@@ -14,4 +14,10 @@ describe Oystercard do
       expect(subject).to respond_to(:top_up).with(1).argument
     end
   end
+
+  describe '#touch_in' do
+    it 'responds to touch_in' do
+      expect(subject).to respond_to(:touch_in)
+    end
+  end
 end
