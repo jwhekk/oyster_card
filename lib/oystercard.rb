@@ -12,4 +12,9 @@ class OysterCard
    @balance += value
  end
 
+ def deduct(value)
+   raise "Insufficient funds" if value > @balance
+   @balance -= value
+ end
+
 end
