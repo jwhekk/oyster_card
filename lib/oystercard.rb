@@ -1,5 +1,5 @@
 class OysterCard
-
+ CARD_LIMIT = 90
  attr_reader :balance
 
  def initialize
@@ -7,6 +7,8 @@ class OysterCard
  end
 
  def top_up(value)
+ 	balance_expected = @balance + value
+ 		raise "Card limit is #{CARD_LIMIT}" if balance_expected > CARD_LIMIT
    @balance += value
  end
 
