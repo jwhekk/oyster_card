@@ -1,5 +1,6 @@
 class OysterCard
  CARD_LIMIT = 90
+ MIN_FARE = 1
  attr_reader :balance, :card_status
 
  def initialize
@@ -18,6 +19,7 @@ class OysterCard
  end
 
  def touch_in
+  raise "minimum fare is #{MIN_FARE} pound" if @balance < MIN_FARE
  	@card_status = true
  end
 

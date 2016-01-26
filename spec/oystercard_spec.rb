@@ -30,6 +30,9 @@ describe OysterCard do
 	end
 
 	context 'card operation' do
+    before(:each) do
+      subject.top_up(1)
+    end
 
 		it { is_expected.to respond_to(:touch_in)}
 
@@ -54,6 +57,11 @@ describe OysterCard do
 			subject.touch_out
 			expect(subject).not_to be_in_journey
 		end
+
+    it "require a minimum fare of 1" do
+      subject.deduct(1)
+      expect{ subject.touch_in}.to raise_error "minimum fare is #{OysterCard::MIN_FARE} pound"
+    end
 	end
 
 
