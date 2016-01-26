@@ -32,6 +32,7 @@ describe Oystercard do
   # I need to touch in and out.
 
   it 'shows that you are in_journey when you touch in' do
+    subject.top_up(Oystercard::MIN_FARE)
     subject.touch_in
     expect(subject).to be_in_journey
   end
@@ -41,4 +42,10 @@ describe Oystercard do
     expect(subject).not_to be_in_journey
   end
 
+  # In order to pay for my journey
+  # As a customer
+  # I need to have the minimum amount (£1) for a single journey.
+  it 'raises an error if you touch in without sufficient funds' do
+    expect{subject.touch_in}.to raise_error 'Insufficient funds'
+  end
 end
