@@ -23,7 +23,7 @@ describe Oystercard do
 
     it 'deducts amount from the balance' do
       subject.top_up(1)
-      expect{subject.deduct(1)}.to change{subject.balance}.from(1).to(0)
+      expect{subject.touch_out}.to change{subject.balance}.from(1).to(0)
     end
   end
 
@@ -47,5 +47,12 @@ describe Oystercard do
   # I need to have the minimum amount (£1) for a single journey.
   it 'raises an error if you touch in without sufficient funds' do
     expect{subject.touch_in}.to raise_error 'Insufficient funds'
+  end
+
+  # In order to pay for my journey
+  # As a customer
+  # When my journey is complete, I need the correct amount deducted from my card
+  it 'deducts min fare when touching out' do
+    expect{subject.touch_out}.to change{subject.balance}.by -Oystercard::MIN_FARE
   end
 end
