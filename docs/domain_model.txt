@@ -1,4 +1,5 @@
 object                  message
+
 customer
 card                    balance
                         top_up
@@ -7,3 +8,4 @@ card                    balance
                         touch_out
                         in_journey?
                         entry_station
+                        history
