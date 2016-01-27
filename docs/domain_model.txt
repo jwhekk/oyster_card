@@ -6,3 +6,4 @@ card                    balance
                         touch_in
                         touch_out
                         in_journey?
+                        entry_station
