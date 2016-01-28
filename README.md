@@ -1,6 +1,6 @@
 
  
-#					Oyster Card challenge    [![Build Status](https://travis-ci.org/MarcoCode/oystercard.svg?branch=master)](https://travis-ci.org/MarcoCode/oystercard)
+#					Oyster Card challenge    [![Build Status](https://travis-ci.org/MarcoCode/oystercard.svg?branch=day-4)](https://travis-ci.org/MarcoCode/oystercard)
 
 
 
