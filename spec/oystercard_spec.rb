@@ -1,9 +1,15 @@
 require 'oystercard'
 
 describe Oystercard do
-  let(:station) {double :station}
-  let(:station2) {double :station}
-  let(:journey) {{:entry_station => station, :exit_station => station2}}
+  let(:station)  { double :station }
+  let(:station2) { double :station }
+  let(:journey) { {:entry_station => station, :exit_station => station2} }
+  
+  before(:each) do
+    allow(station).to receive(:name).and_return(station)
+    allow(station2).to receive(:name).and_return(station2)
+  end
+  
 
   it 'initializes with a balance of 0' do
     expect(subject.balance).to eq 0
