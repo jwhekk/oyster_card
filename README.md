@@ -1,4 +1,4 @@
-					# Oyster Card challenge
+					# Oyster Card challenge       [![Build Status](https://travis-ci.org/MarcoCode/oystercard.svg?branch=master)](https://travis-ci.org/MarcoCode/oystercard)
 
 What is it?
 ----------
