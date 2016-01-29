@@ -1,3 +1,5 @@
+require_relative 'journey'
+
 class Oystercard
   MAX_BALANCE = 90
   MIN_FARE = 1
@@ -15,13 +17,22 @@ class Oystercard
 
   def touch_in(entry_station)
     raise 'Insufficient funds' if insufficient_fund?
-    store_entry_station(entry_station)
+    @journey = Journey.new
+    @entry_station = @journey.store_entry_station(entry_station)
+    #store_entry_station(entry_station)
   end
 
   def touch_out(exit_station)
-    deduct(MIN_FARE)
-    store_journey(exit_station)
-    @entry_station = nil
+    if in_journey?
+      deduct(MIN_FARE)
+      @journey.store_journey(exit_station)
+      @entry_station = nil
+      @history << @journey.journey
+    else
+      @journey = Journey.new
+      @journey.no_touch_in(exit_station)
+      @history << @journey.journey
+    end
   end
 
   def in_journey?
@@ -42,14 +53,14 @@ class Oystercard
     @balance < MIN_FARE
   end
 
-  def store_entry_station(entry_station)
-    station_hash = {}
-    station_hash[:entry_station] = entry_station
-    @entry_station = station_hash
-  end
+#   def store_entry_station(entry_station)
+#     station_hash = {}
+#     station_hash[:entry_station] = entry_station
+#     @entry_station = station_hash
+#   end
 
-  def store_journey(exit_station)
-    @entry_station[:exit_station] = exit_station
-    @history << @entry_station
-  end
+#   def store_journey(exit_station)
+#     @entry_station[:exit_station] = exit_station
+#     @history << @entry_station
+#   end
 end
